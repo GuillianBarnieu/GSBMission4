@@ -32,6 +32,11 @@ namespace GSBMission4
             return asString;
         }
 
+        public String getMois(String laDate)
+        {
+            String moisJour = laDate.Substring(3, 4);
+            return moisJour;
+        }
 
 
 
