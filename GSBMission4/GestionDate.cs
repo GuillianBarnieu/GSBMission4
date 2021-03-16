@@ -4,24 +4,20 @@ using System.Text;
 
 namespace GSBMission4
 {
-    class GestionDate
+    public  class GestionDate
     {
-        DateTime ajd = DateTime.Now;
+       
         public String dateJour()
         {
+            DateTime ajd = DateTime.Now;
             String asString = ajd.ToString("dd/MM/yyyy");
             return asString;
         }
 
         public String moisPrecedent()
         {
+            DateTime ajd = DateTime.Now;
             ajd = ajd.AddMonths(-1);
-            String asString = ajd.ToString("dd/MM/yyyy");
-
-            return asString;
-        }
-        public String moisCourant()
-        {
             String asString = ajd.ToString("dd/MM/yyyy");
 
             return asString;
@@ -29,6 +25,7 @@ namespace GSBMission4
 
         public String moisSuivant()
         {
+            DateTime ajd = DateTime.Now;
             ajd = ajd.AddMonths(+1);
             String asString = ajd.ToString("dd/MM/yyyy");
 
