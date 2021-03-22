@@ -19,7 +19,9 @@ namespace GSBMission4
             DateTime ajd = DateTime.Now;
             ajd = ajd.AddMonths(-1);
             String asString = ajd.ToString("dd/MM/yyyy");
-
+            String lAnnee = asString.Substring(6, 4);
+            String leMois = asString.Substring(3, 2);
+            asString = lAnnee + leMois;
             return asString;
         }
 

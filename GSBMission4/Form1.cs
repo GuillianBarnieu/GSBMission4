@@ -22,76 +22,88 @@ namespace GSBMission4
         public Form1()
         {
             InitializeComponent();
+            InitializeTimer();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             maConnexion = ConnexionSQL.getInstance("localhost", "gsb-v1", "root", "");
             maConnexion.openConnection();
+            GestionDate date = new GestionDate();
+            DataTable dt = new DataTable();
 
-            selectionEmpl = maConnexion.reqExec("Select* from fichefrais");
-
-
-            MySqlDataReader reader = selectionEmpl.ExecuteReader();
-            dtAffichage = new DataTable();
-
-            for (int i = 0; i < reader.FieldCount; i++)
-            {
-                dtAffichage.Columns.Add(reader.GetName(i));
-            }
-            while (reader.Read())
-            {
-
-
-                DataRow drAffichage = dtAffichage.NewRow();
-                for (int i = 0; i < reader.FieldCount; i++)
-                {
-
-                    drAffichage[i] = reader.GetValue(i);
-                }
-
-                dtAffichage.Rows.Add(drAffichage);
-            }
-            dataGridView1.DataSource = dtAffichage;
+            MySqlCommand oCom = maConnexion.reqExec("Select * from fichefrais where mois =" + date.moisPrecedent());
+            dt.Load(oCom.ExecuteReader());
+            dataGridView1.DataSource = dt;
             maConnexion.closeConnection();
-            reader.Close();
+            //reader.Close();
 
         }
 
         private void InitializeTimer()
         {
-            timer1.Interval = 30000;
+            timer1.Interval = 10000;
             timer1.Tick += new EventHandler(Timer1_Tick);
+            timer1.Start();
         }
 
         private void Timer1_Tick(object Sender, EventArgs e)
         {
-            DateTime ajd = DateTime.Now;
-            String moisPreced = date.moisPrecedent();
-            maConnexion.openConnection();
-            lesFichesPrecedentes = maConnexion.reqExec("Select * from Fichefrais where mois = " + moisPreced + "and idEtat =");
-
-            MySqlDataReader readerFiches = lesFichesPrecedentes.ExecuteReader();
-            dtFiches = new DataTable();
-
-            for (int i = 0; i < readerFiches.FieldCount; i++)
+            //timer1.Stop();
+            try
             {
-                dtFiches.Columns.Add(readerFiches.GetName(i));
-            }
-            while (readerFiches.Read())
-            {
+                timer1.Start();
+                GestionDate date = new GestionDate();
+                String ajd = date.dateJour();   
+                int a = int.Parse(ajd.Substring(0, 2));
+
+                maConnexion.openConnection();
 
 
-                DataRow drFiches = dtFiches.NewRow();
-                for (int i = 0; i < readerFiches.FieldCount; i++)
+
+                 if (a >= 1 && a <= 22)
                 {
-
-                    drFiches[i] = readerFiches.GetValue(i);
+                    MySqlCommand oCom1 = maConnexion.reqExec("Update fichefrais set idEtat = 'CL' where idEtat ='CR' and mois =" + date.moisPrecedent());
+                    oCom1.ExecuteNonQuery();
+                    MySqlCommand oCom = maConnexion.reqExec("Select * from fichefrais where mois =" + date.moisPrecedent());
+                    DataTable dt2 = new DataTable();
+                    dt2.Load(oCom.ExecuteReader());
+                    dataGridView1.DataSource = dt2;
+                    maConnexion.closeConnection();
                 }
-
-                dtFiches.Rows.Add(drFiches);
-
+            }
+            catch (Exception emp)
+            {
+                MessageBox.Show(emp.Message);
             }
         }
+        /*DateTime ajd = DateTime.Now;
+        String moisPreced = date.moisPrecedent();
+        maConnexion.openConnection();
+        lesFichesPrecedentes = maConnexion.reqExec("Select * from Fichefrais where mois = " + moisPreced + "and idEtat = CL");
+
+        MySqlDataReader readerFiches = lesFichesPrecedentes.ExecuteReader();
+        dtFiches = new DataTable();
+
+        for (int i = 0; i < readerFiches.FieldCount; i++)
+        {
+            dtFiches.Columns.Add(readerFiches.GetName(i));
+        }
+        while (readerFiches.Read())
+        {
+
+
+            DataRow drFiches = dtFiches.NewRow();
+            for (int i = 0; i < readerFiches.FieldCount; i++)
+            {
+
+                drFiches[i] = readerFiches.GetValue(i);
+            }
+
+            dtFiches.Rows.Add(drFiches);
+
+        }
+    }
+        */
     }
 }
