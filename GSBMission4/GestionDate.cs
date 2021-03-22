@@ -7,6 +7,10 @@ namespace GSBMission4
     public  class GestionDate
     {
        
+        /// <summary>
+        /// Function that uses DateTime to return the actual day
+        /// </summary>
+        /// <returns>Current Month</returns>
         public String dateJour()
         {
             DateTime ajd = DateTime.Now;
@@ -14,6 +18,10 @@ namespace GSBMission4
             return asString;
         }
 
+        /// <summary>
+        /// Function that uses DateTime to return the last month
+        /// </summary>
+        /// <returns>Last Month</returns>
         public String moisPrecedent()
         {
             DateTime ajd = DateTime.Now;
@@ -25,6 +33,10 @@ namespace GSBMission4
             return asString;
         }
 
+        /// <summary>
+        /// Function that uses DateTime to return the next month
+        /// </summary>
+        /// <returns>Next Month</returns>
         public String moisSuivant()
         {
             DateTime ajd = DateTime.Now;
@@ -34,6 +46,10 @@ namespace GSBMission4
             return asString;
         }
 
+        /// <summary>
+        /// Function that uses DateTime to return the current month
+        /// </summary>
+        /// <returns>The current month</returns>
         public String getMois(String laDate)
         {
             String moisJour = laDate.Substring(3, 4);
