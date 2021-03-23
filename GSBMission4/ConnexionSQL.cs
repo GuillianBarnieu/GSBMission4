@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using MySql.Data.MySqlClient;
 
-namespace GSBMission4
+namespace GSBMission4FrameWork
 {
     class ConnexionSQL
     {

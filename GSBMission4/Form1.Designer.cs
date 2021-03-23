@@ -1,5 +1,5 @@
 ﻿
-namespace GSBMission4
+namespace GSBMission4FrameWork
 {
     partial class Form1
     {

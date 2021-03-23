@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GSBMission4
+namespace GSBMission4FrameWork
 {
     public  class GestionDate
     {

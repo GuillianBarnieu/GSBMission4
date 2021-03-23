@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
-namespace GSBMission4
+namespace GSBMission4FrameWork
 {
     public partial class Form1 : Form
     {
@@ -99,10 +99,32 @@ namespace GSBMission4
 
 
 
-                 if (a >= 1 && a <= 22)
+                 if (a >= 1 && a <= 10)
                 {
                     //Création de la commande contenant la requête de mise à jour de l'état des fiches frais
                     MySqlCommand oCom1 = maConnexion.reqExec("Update fichefrais set idEtat = 'CL' where idEtat ='CR' and mois =" + date.moisPrecedent());
+                    //Execution de la requête précedement créée
+                    oCom1.ExecuteNonQuery();
+
+                    //Création de la commande contenant la requête de mise à jour de l'affichage des fiches
+                    MySqlCommand oCom = maConnexion.reqExec("Select * from fichefrais where mois =" + date.moisPrecedent());
+
+                    //Création de la DataTable dt2 qui va contenir les résultats de la requête précedente
+                    DataTable dt2 = new DataTable();
+
+                    //Remplissage de la DataTable dt2 avec les résultats donnés par l'ExecuteReader sur la requête précedente.
+                    dt2.Load(oCom.ExecuteReader());
+
+                    //Remplissage de la dataGridView avec les résultats stockés dans dt2
+                    dataGridView1.DataSource = dt2;
+
+                    //Fermeture de la connexion maConnexion
+                    maConnexion.closeConnection();
+                }
+                if (a >= 20 && a <= 30)
+                {
+                    //Création de la commande contenant la requête de mise à jour de l'état des fiches frais
+                    MySqlCommand oCom1 = maConnexion.reqExec("Update fichefrais set idEtat = 'MP' where idEtat ='RB' and mois =" + date.moisPrecedent());
                     //Execution de la requête précedement créée
                     oCom1.ExecuteNonQuery();
 
