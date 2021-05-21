@@ -5,7 +5,6 @@ C:\Users\Guill\source\repos\GSBMission4\GSBMission4\bin\Debug\netcoreapp3.1\GSBM
 C:\Users\Guill\source\repos\GSBMission4\GSBMission4\bin\Debug\netcoreapp3.1\GSBMission4.dll
 C:\Users\Guill\source\repos\GSBMission4\GSBMission4\bin\Debug\netcoreapp3.1\GSBMission4.pdb
 C:\Users\Guill\source\repos\GSBMission4\GSBMission4\obj\Debug\netcoreapp3.1\GSBMission4.csprojAssemblyReference.cache
-C:\Users\Guill\source\repos\GSBMission4\GSBMission4\obj\Debug\netcoreapp3.1\GSBMission4.Form1.resources
 C:\Users\Guill\source\repos\GSBMission4\GSBMission4\obj\Debug\netcoreapp3.1\GSBMission4.csproj.GenerateResource.cache
 C:\Users\Guill\source\repos\GSBMission4\GSBMission4\obj\Debug\netcoreapp3.1\GSBMission4.AssemblyInfoInputs.cache
 C:\Users\Guill\source\repos\GSBMission4\GSBMission4\obj\Debug\netcoreapp3.1\GSBMission4.AssemblyInfo.cs
@@ -52,3 +51,4 @@ C:\Users\Guill\source\repos\GSBMission4\GSBMission4\bin\Debug\netcoreapp3.1\Renc
 C:\Users\Guill\source\repos\GSBMission4\GSBMission4\bin\Debug\netcoreapp3.1\SshNet.Security.Cryptography.dll
 C:\Users\Guill\source\repos\GSBMission4\GSBMission4\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll
 C:\Users\Guill\source\repos\GSBMission4\GSBMission4\obj\Debug\netcoreapp3.1\GSBMission4.csproj.CopyComplete
+C:\Users\Guill\source\repos\GSBMission4\GSBMission4\obj\Debug\netcoreapp3.1\GSBMission4FrameWork.Form1.resources
